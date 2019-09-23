@@ -1,17 +1,17 @@
 
 #include <stdio.h> 
-#define COINS 9 
-#define MAX 20 
 
-// All denominations of Indian Currency 
-int coins[COINS] = { 1, 2, 5, 10, 20, 50, 100, 200, 2000 }; 
+int coins[100];
+int COINS;
+
+
 
 void findMin(int cost) 
 { 
-	int coinList[MAX] = { 0 }; 
+	int coinList[100]; 
 	int i, k = 0; 
 
-	for (i = COINS - 1; i >= 0; i--) { 
+	for (i = 0; i < COINS ; i++) { 
 		while (cost >= coins[i]) { 
 			cost -= coins[i]; 
 			coinList[k++] = coins[i]; // add coin in the list 
@@ -24,10 +24,31 @@ void findMin(int cost)
 	return; 
 } 
 
-int main(void) 
-{ 
-	int n = 195; // net amount of change i waant 
 
+sort(int c[])
+{
+int t;
+for(int i=0;i<COINS;i++)
+for(int j=0;j<COINS-1-i;j++)
+{
+if(c[j]<c[j+1])
+{
+t=c[j]; c[j]=c[j+1]; c[j+1]=t;
+}
+}
+}
+
+int main() 
+{ 
+	int n,i;
+	printf("enter number of coins :\n");
+	scanf("%d",&COINS);
+	printf("enter the coins :\n");
+	for(i=0;i<COINS;i++)
+	scanf("%d",&coins[i]);
+	printf("enter change : ");
+	scanf("%d",&n);
+	sort(coins);	
 	printf("Following is minimal number of change for %d: ", n); 
 	findMin(n); 
 	return 0; 

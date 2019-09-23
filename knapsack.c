@@ -1,19 +1,30 @@
 #include<stdio.h>
 void main()
 {
-int i,j,n,m=15,cpy;float pw[7],x[7];float t1,prof=0.0;int t2,t3;
-int p[7]={10,5,15,7,6,18,3};
-int w[7]={2,3,5,7,1,4,1};
-for(i=0;i<7;i++)
+int i,j,n,m,cpy;float pw[20],x[20],p[20],w[20];float t1,prof=0.0;int t2,t3;
+
+printf("enter the no of weights : ");
+scanf("%d",&n);
+printf("enter the profits :\n");
+for(i=0;i<n;i++)
+scanf("%f",&p[i]);
+printf("enter the weights :\n");
+for(i=0;i<n;i++)
+scanf("%f",&w[i]);
+printf("enter capacity : ");
+scanf("%d",&m);
+
+
+for(i=0;i<n;i++)
 {
 pw[i]=(double)p[i]/w[i];
 printf("%f ",pw[i]);
 }
 //bubble sort p/w
 
-for(i=0;i<7;i++)
+for(i=0;i<n;i++)
 {
-for(j=0;j<7-1-i;j++)
+for(j=0;j<n-1-i;j++)
 {
 if(pw[j]<=pw[j+1])
 {
@@ -30,16 +41,16 @@ p[j]=p[j+1];
 p[j+1]=t3;}
 }}}
 printf("\nsorted profits/weights\n");
-for(i=0;i<7;i++)
+for(i=0;i<n;i++)
 printf("%.3f ",pw[i]);
 printf("\nsorted weights\n");
-for(i=0;i<7;i++)
-printf("%d ",w[i]);
+for(i=0;i<n;i++)
+printf("%f ",w[i]);
 printf("\nsorted profits\n");
-for(i=0;i<7;i++)
-printf("%d ",p[i]);
+for(i=0;i<n;i++)
+printf("%f ",p[i]);
 cpy=m;
-for(i=0;i<7;i++)
+for(i=0;i<n;i++)
 {
 if(m!=0 && m<=cpy &&w[i]<=m)
 {
@@ -53,10 +64,10 @@ prof=(double)(prof+(double)(x[i]*p[i]));
 m=m-(x[i]*w[i]);}
 }
 printf("\nCorresponding values of x w.r.t weights used \n");
-for(i=0;i<7;i++)
+for(i=0;i<n;i++)
 printf("%.3f\t",x[i]);
 printf("\n");
-for(i=0;i<7;i++)
-printf("%d\t",w[i]);
+for(i=0;i<n;i++)
+printf("%f\t",w[i]);
 printf("\nmaximum profit = %f\n",prof);
 }
